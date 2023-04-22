@@ -1,14 +1,24 @@
 package com.example.main
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TimePicker
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.time.LocalDate
+import java.util.Calendar
 
 class EditEventActivity : AppCompatActivity() {
 
@@ -25,9 +35,12 @@ class EditEventActivity : AppCompatActivity() {
         val savedEvents = getSavedEventsFromLocalStorage()
         event = savedEvents.find { it.id == eventId } ?: return
 
+        // Find UI elements
         val eventNameEditText = findViewById<EditText>(R.id.eventNameEditText)
         val eventDescriptionEditText = findViewById<EditText>(R.id.eventDescriptionEditText)
         val eventLocationEditText = findViewById<EditText>(R.id.eventLocationEditText)
+        val eventDataIcon = findViewById<ImageView>(R.id.event_date_edit_icon)
+        val eventTimeIcon = findViewById<ImageView>(R.id.event_time_edit_icon)
         val eventDateEditText = findViewById<EditText>(R.id.eventDateEditText)
         val eventTimeEditText = findViewById<EditText>(R.id.eventTimeEditText)
         val saveButton = findViewById<Button>(R.id.saveButton)
@@ -38,6 +51,52 @@ class EditEventActivity : AppCompatActivity() {
         eventLocationEditText.setText(event.location)
         eventDateEditText.setText(event.date)
         eventTimeEditText.setText(event.time)
+
+        // Set click listener for event date edit text
+        eventDataIcon.setOnClickListener {
+//            showDatePickerDialog()
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+                val selectedDate = "${monthOfYear + 1}/${dayOfMonth}/${year}"
+                eventDateEditText.setText(selectedDate)
+            }, year, month, day)
+
+            // Set minimum date to today's date
+            datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
+
+            datePicker.show()
+        }
+
+        // Set click listener for event time edit text
+        eventTimeIcon.setOnClickListener {
+//            showTimePickerDialog()
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val timePicker = TimePickerDialog(this, { _, hourOfDay, minute ->
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                selectedCalendar.set(Calendar.MINUTE, minute)
+                selectedCalendar.set(Calendar.SECOND, 0)
+                selectedCalendar.set(Calendar.MILLISECOND, 0)
+
+                if (selectedCalendar.timeInMillis < calendar.timeInMillis) {
+                    Toast.makeText(this, "Please select a time in the future", Toast.LENGTH_SHORT).show()
+                    eventTimeEditText.setText("")
+                } else {
+                    val amPm = if (hourOfDay < 12) "AM" else "PM"
+                    val selectedTime = String.format("%02d:%02d %s", if (hourOfDay > 12) hourOfDay - 12 else hourOfDay, minute, amPm)
+                    eventTimeEditText.setText(selectedTime)
+                }
+            }, hour, minute, false)
+
+            timePicker.show()
+        }
 
         // Set click listener for save button
         saveButton.setOnClickListener {
@@ -60,11 +119,8 @@ class EditEventActivity : AppCompatActivity() {
             // Save the updated list of events to local storage
             saveEventsToLocalStorage(updatedEvents)
 
-            // Notify the adapter that the data has changed
-            val intent = Intent().apply {
-                putExtra("event_id", event.id)
-            }
-            setResult(Activity.RESULT_OK, intent)
+            // Notify the adapter
+            setResult(Activity.RESULT_OK)
             finish()
         }
     }
@@ -87,15 +143,17 @@ class EditEventActivity : AppCompatActivity() {
     }
 
     // Save list of events to local storage
-    private fun saveEventsToLocalStorage(events: List<Event>) {
+    private fun saveEventsToLocalStorage(events:
+                                         List<Event>) {
         val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        // Convert into json
-        val eventListType = object : TypeToken<List<Event>>() {}.type
-        val eventJsonString = Gson().toJson(events, eventListType)
+        // Convert the list of events to a JSON string
+        val eventJsonString = Gson().toJson(events)
 
+        // Save the JSON string to local storage
         editor.putString("events", eventJsonString)
         editor.apply()
     }
 }
+
