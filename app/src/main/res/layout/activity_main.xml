@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:background="@color/light_purpel"
         android:textAlignment="center"
         android:text="Upcoming events">
 
@@ -37,14 +38,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/purel1"
         >
 
         <Button
             android:id="@+id/create_event_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create New Event"
-            android:layout_margin="20dp"
+            android:text="Create Your Event"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,8 +54,7 @@
             android:id="@+id/view_events_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="View All Events"
-            android:layout_margin="20dp"
+            android:text="View Register Events"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
