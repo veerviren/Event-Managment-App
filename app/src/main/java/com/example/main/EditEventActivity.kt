@@ -1,6 +1,8 @@
 package com.example.main
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -58,7 +60,11 @@ class EditEventActivity : AppCompatActivity() {
             // Save the updated list of events to local storage
             saveEventsToLocalStorage(updatedEvents)
 
-            // Return to ViewEventsActivity
+            // Notify the adapter that the data has changed
+            val intent = Intent().apply {
+                putExtra("event_id", event.id)
+            }
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }
     }
@@ -66,12 +72,9 @@ class EditEventActivity : AppCompatActivity() {
     // Retrieve list of saved events from local storage
     private fun getSavedEventsFromLocalStorage(): List<Event> {
         val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)
-        val eventJsonString = sharedPreferences.getString("events", null)
+        val eventJsonString = sharedPreferences.getString("events", null) ?: return emptyList()
 
         // If there are no saved events, return an empty list
-        if (eventJsonString == null) {
-            return emptyList()
-        }
 
         // Convert the JSON string to a list of Event objects
         val eventListType = object : TypeToken<List<Event>>() {}.type
@@ -88,7 +91,7 @@ class EditEventActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-// Convert
+        // Convert into json
         val eventListType = object : TypeToken<List<Event>>() {}.type
         val eventJsonString = Gson().toJson(events, eventListType)
 
