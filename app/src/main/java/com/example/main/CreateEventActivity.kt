@@ -105,7 +105,7 @@ class CreateEventActivity : AppCompatActivity() {
             }
 
             // Create new event
-            val newEvent = Event(1, eventName, eventDescription, eventLocation, eventDate, eventTime)
+            val newEvent = Event( 1,eventName, eventDescription, eventLocation, eventDate, eventTime, R.drawable.science_fair)
 
             // Save new event to shared preferences
             val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)
