@@ -1,58 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Event"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/eventNameEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/eventDescriptionEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Event"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/eventLocationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Location"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/eventNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"/>
 
-    <EditText
-        android:id="@+id/eventDateEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Date (YYYY-MM-DD)"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/eventDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/eventTimeEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Time (HH:MM)"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/eventLocationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"/>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/event_date_edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_calendar_month_24"/>
+
+            <EditText
+                android:id="@+id/eventDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date (YYYY-MM-DD)"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/event_time_edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_access_time_24"/>
+
+            <EditText
+                android:id="@+id/eventTimeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Time (HH:MM)"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+

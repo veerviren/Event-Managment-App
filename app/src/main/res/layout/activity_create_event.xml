@@ -1,84 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/create_event_layout"
+    android:id="@+id/create_event_card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreateEventActivity">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
 
-    <TextView
-        android:id="@+id/title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="Create a New Event"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:id="@+id/event_name_edit_text"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Name"
-        android:layout_below="@id/title_text_view"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="text"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/event_description_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Description"
-        android:layout_below="@id/event_name_edit_text"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Create a New Event"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/event_location_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Location"
-        android:layout_below="@id/event_description_edit_text"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="text"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/event_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Event Name"
+            android:layout_below="@id/title_text_view"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="text"
+            android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/event_date_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Date (MM/DD/YYYY)"
-        android:layout_below="@id/event_location_edit_text"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="date"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/event_description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Event Description"
+            android:layout_below="@id/event_name_edit_text"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/event_time_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Time (HH:MM AM/PM)"
-        android:layout_below="@id/event_date_edit_text"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="time"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/event_location_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Event Location"
+            android:layout_below="@id/event_description_edit_text"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="text"
+            android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Event"
-        android:layout_below="@id/event_time_edit_text"
-        android:layout_marginTop="32dp"
-        android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:id="@+id/event_date_crate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/event_location_edit_text"
+            android:layout_marginTop="16dp">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/event_date_create_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_calendar_month_24"/>
+
+            <EditText
+                android:id="@+id/eventDateCreateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date (YYYY-MM-DD)"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/event_time_crate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/event_date_crate_layout"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/event_time_create_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_access_time_24"/>
+
+            <EditText
+                android:id="@+id/eventTimeCreateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Time (HH:MM)"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Event"
+            android:layout_below="@id/event_time_crate_layout"
+            android:layout_marginTop="32dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
