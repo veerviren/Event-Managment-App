@@ -28,12 +28,12 @@ class EditEventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_event)
 
-//        // Retrieve the ID of the event that the user wants to edit
-//        val eventId = intent.getIntExtra("event_id", -1)
-//
-//        // Retrieve the list of saved events and find the event with the matching ID
-//        val savedEvents = getSavedEventsFromLocalStorage()
-//        event = savedEvents.find { it.id == eventId } ?: return
+        // Retrieve the ID of the event that the user wants to edit
+        val eventId = intent.getIntExtra("event_id", -1)
+
+        // Retrieve the list of saved events and find the event with the matching ID
+        val savedEvents = getSavedEventsFromLocalStorage()
+        event = savedEvents.find { it.id == eventId } ?: return
 
         // Find UI elements
         val eventNameEditText = findViewById<EditText>(R.id.eventNameEditText)

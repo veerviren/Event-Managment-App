@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 "Surat, Gujarat",
                 "June 5, 2023",
                 "12:00 AM",
-                R.drawable.science_fair
+                R.drawable.upcoming
             )
         )
 
@@ -145,13 +145,6 @@ class MainActivity : AppCompatActivity() {
                     timePickerDialog.show()
                 }
 
-                // Set up image picker
-                val selectImageButton = newEventView.findViewById<Button>(R.id.select_image_button)
-                selectImageButton.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                    startActivityForResult(intent, IMAGE_PICKER_REQUEST_CODE)
-                }
-
                 // Set click listener for "Save" button
                 newEventView.findViewById<Button>(R.id.save_event_button).setOnClickListener {
                     // Get user input from form
@@ -186,8 +179,6 @@ class MainActivity : AppCompatActivity() {
 
             dialogBuilder.show()
         }
-
-
         upcomingEvents.addView(emptyCardView)
 
         createEventButton.setOnClickListener {
@@ -200,20 +191,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == IMAGE_PICKER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            // Get the selected image URI
-            val imageUri = data.data
-
-            // Update the image view with the selected image using Glide
-            val imageView = findViewById<ImageView>(R.id.event_image_view)
-            Glide.with(this)
-                .load(imageUri)
-                .into(imageView)
-        }
-    }
-
 }

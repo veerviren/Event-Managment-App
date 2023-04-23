@@ -18,7 +18,7 @@
             android:id="@+id/event_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/event" />
+            android:src="@drawable/upcoming" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

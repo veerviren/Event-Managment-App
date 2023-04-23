@@ -78,19 +78,19 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/select_image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Select Image"/>
+<!--        <Button-->
+<!--            android:id="@+id/select_image_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Select Image"/>-->
 
         <ImageView
             android:id="@+id/event_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:src="@drawable/science_fair"/>
+            android:src="@drawable/upcoming"/>
 
     </LinearLayout>
 
