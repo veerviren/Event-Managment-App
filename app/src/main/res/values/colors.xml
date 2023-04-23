@@ -5,4 +5,7 @@
     <color name="cream">#FFF2CC</color>
     <color name="light_purpel">#E5BEEC</color>
     <color name="purel1">#ECC9EE</color>
+    <color name="splash_screen">#F4F5FC</color>
+    <color name="dark_pupel">#024BAA</color>
+    <color name="green">#3DE52A</color>
 </resources>

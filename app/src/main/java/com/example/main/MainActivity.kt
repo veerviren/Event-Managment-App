@@ -49,19 +49,19 @@ class MainActivity : AppCompatActivity() {
                 2,
                 "Math Competition",
                 "Come see the exciting math projects our students have been working on!",
-                "Surat, Gujarat",
+                "New York, USA",
                 "June 5, 2023",
                 "12:00 AM",
                 R.drawable.math_competition
             ),
             Event(
                 3,
-                "Science Fair",
-                "Come see the exciting science projects our students have been working on!",
-                "Surat, Gujarat",
-                "June 5, 2023",
-                "12:00 AM",
-                R.drawable.upcoming
+                "Tedx Talk",
+                "Come see the exciting Tedx Talk our students have been working on!",
+                "London, UK",
+                "April 5, 2023",
+                "5:00 PM",
+                R.drawable.tedx
             )
         )
 
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             // Show dialog box
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Add New Event")
-            dialogBuilder.setMessage("Are you sure you want to add a new event?")
+            dialogBuilder.setMessage("Are you sure you want to add a new upcoming event?")
             dialogBuilder.setPositiveButton("Yes") { _, _ ->
                 // Remove empty card view
                 upcomingEvents.removeView(emptyCardView)
