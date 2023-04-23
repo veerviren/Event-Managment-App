@@ -22,45 +22,87 @@
             android:layout_marginBottom="16dp"
             android:layout_centerHorizontal="true"/>
 
-        <EditText
-            android:id="@+id/event_name_edit_text"
+        <LinearLayout
+            android:id="@+id/event_name_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Event Name"
-            android:layout_below="@id/title_text_view"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:inputType="text"
-            android:layout_marginTop="16dp"/>
+            android:layout_below="@+id/title_text_view"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/event_description_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Event Description"
-            android:layout_below="@id/event_name_edit_text"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:inputType="textMultiLine"
-            android:layout_marginTop="16dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_person_24"/>
 
-        <EditText
-            android:id="@+id/event_location_edit_text"
+            <EditText
+                android:id="@+id/event_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Name"
+                android:layout_below="@id/title_text_view"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:inputType="text"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/event_description_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Event Location"
-            android:layout_below="@id/event_description_edit_text"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:inputType="text"
-            android:layout_marginTop="16dp"/>
+            android:layout_below="@+id/event_name_linear_layout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_description_24"/>
+            <EditText
+                android:id="@+id/event_description_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Description"
+                android:layout_below="@id/event_name_linear_layout"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/event_location_linear_layout"
+            android:layout_below="@+id/event_description_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_location_on_24"/>
+
+            <EditText
+                android:id="@+id/event_location_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Location"
+                android:layout_below="@id/event_description_linear_layout"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:inputType="text"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:id="@+id/event_date_crate_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/event_location_edit_text"
+            android:layout_below="@+id/event_location_linear_layout"
             android:layout_marginTop="16dp">
 
             <ImageView

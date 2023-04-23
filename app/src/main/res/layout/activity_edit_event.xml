@@ -22,25 +22,62 @@
             android:textSize="24sp"
             android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/eventNameEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_person_24"
+                android:layout_gravity="center"/>
+            <EditText
+                android:id="@+id/eventNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"/>
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/eventDescriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description"
-            android:layout_marginTop="16dp"/>
 
-        <EditText
-            android:id="@+id/eventLocationEditText"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location"
-            android:layout_marginTop="16dp"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_description_24"
+                android:layout_gravity="center"/>
+            <EditText
+                android:id="@+id/eventDescriptionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_location_on_24"/>
+
+            <EditText
+                android:id="@+id/eventLocationEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Location"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
 
 
         <LinearLayout
@@ -51,6 +88,7 @@
 
             <ImageView
                 android:id="@+id/event_date_edit_icon"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_calendar_month_24"/>
@@ -72,6 +110,7 @@
 
             <ImageView
                 android:id="@+id/event_time_edit_icon"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_access_time_24"/>
