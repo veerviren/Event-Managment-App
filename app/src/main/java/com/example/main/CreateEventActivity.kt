@@ -4,19 +4,15 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
 class CreateEventActivity : AppCompatActivity() {
 
@@ -26,8 +22,8 @@ class CreateEventActivity : AppCompatActivity() {
     private lateinit var eventDateEditText: EditText
     private lateinit var eventTimeEditText: EditText
     private lateinit var createEventButton: Button
-    private lateinit var eventDateIcon : ImageView
-    private lateinit var eventTimeIcon : ImageView
+    private lateinit var eventDateIcon: ImageView
+    private lateinit var eventTimeIcon: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,11 +73,17 @@ class CreateEventActivity : AppCompatActivity() {
                 selectedCalendar.set(Calendar.MILLISECOND, 0)
 
                 if (selectedCalendar.timeInMillis < calendar.timeInMillis) {
-                    Toast.makeText(this, "Please select a time in the future", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please select a time in the future", Toast.LENGTH_SHORT)
+                        .show()
                     eventTimeEditText.setText("")
                 } else {
                     val amPm = if (hourOfDay < 12) "AM" else "PM"
-                    val selectedTime = String.format("%02d:%02d %s", if (hourOfDay > 12) hourOfDay - 12 else hourOfDay, minute, amPm)
+                    val selectedTime = String.format(
+                        "%02d:%02d %s",
+                        if (hourOfDay > 12) hourOfDay - 12 else hourOfDay,
+                        minute,
+                        amPm
+                    )
                     eventTimeEditText.setText(selectedTime)
                 }
             }, hour, minute, false)
@@ -105,7 +107,15 @@ class CreateEventActivity : AppCompatActivity() {
             }
 
             // Create new event
-            val newEvent = Event( 1,eventName, eventDescription, eventLocation, eventDate, eventTime, R.drawable.science_fair)
+            val newEvent = Event(
+                1,
+                eventName,
+                eventDescription,
+                eventLocation,
+                eventDate,
+                eventTime,
+                R.drawable.science_fair
+            )
 
             // Save new event to shared preferences
             val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)

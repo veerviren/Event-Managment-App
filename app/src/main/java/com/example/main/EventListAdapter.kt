@@ -14,7 +14,8 @@ class EventListAdapter : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
     private var onEditClickListener: ((Event) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.event_item_layout, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.event_item_layout, parent, false)
         return ViewHolder(view)
     }
 

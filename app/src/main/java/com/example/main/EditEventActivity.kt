@@ -4,20 +4,14 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
-import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TimePicker
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.time.LocalDate
 import java.util.Calendar
 
 class EditEventActivity : AppCompatActivity() {
@@ -86,11 +80,17 @@ class EditEventActivity : AppCompatActivity() {
                 selectedCalendar.set(Calendar.MILLISECOND, 0)
 
                 if (selectedCalendar.timeInMillis < calendar.timeInMillis) {
-                    Toast.makeText(this, "Please select a time in the future", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please select a time in the future", Toast.LENGTH_SHORT)
+                        .show()
                     eventTimeEditText.setText("")
                 } else {
                     val amPm = if (hourOfDay < 12) "AM" else "PM"
-                    val selectedTime = String.format("%02d:%02d %s", if (hourOfDay > 12) hourOfDay - 12 else hourOfDay, minute, amPm)
+                    val selectedTime = String.format(
+                        "%02d:%02d %s",
+                        if (hourOfDay > 12) hourOfDay - 12 else hourOfDay,
+                        minute,
+                        amPm
+                    )
                     eventTimeEditText.setText(selectedTime)
                 }
             }, hour, minute, false)
@@ -143,8 +143,10 @@ class EditEventActivity : AppCompatActivity() {
     }
 
     // Save list of events to local storage
-    private fun saveEventsToLocalStorage(events:
-                                         List<Event>) {
+    private fun saveEventsToLocalStorage(
+        events:
+        List<Event>
+    ) {
         val sharedPreferences = getSharedPreferences("MyEvents", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 

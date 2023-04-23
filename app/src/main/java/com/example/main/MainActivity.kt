@@ -5,19 +5,14 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.TimePicker
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -72,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             cardView.findViewById<TextView>(R.id.event_name).text = event.name
             cardView.findViewById<TextView>(R.id.event_date).text = event.date
             cardView.findViewById<TextView>(R.id.event_time).text = event.time
+            cardView.findViewById<TextView>(R.id.event_location).text = event.location
             cardView.findViewById<ImageView>(R.id.event_image).setImageResource(event.image)
             cardView.findViewById<TextView>(R.id.event_description).text = event.description
 
@@ -80,7 +76,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //card for adding upcoming events
-        val emptyCardView = layoutInflater.inflate(R.layout.empty_upcoming_event_card, null) as CardView
+        val emptyCardView =
+            layoutInflater.inflate(R.layout.empty_upcoming_event_card, null) as CardView
         // Set an OnClickListener on the empty card view
         emptyCardView.setOnClickListener {
             // Show dialog box
@@ -92,7 +89,8 @@ class MainActivity : AppCompatActivity() {
                 upcomingEvents.removeView(emptyCardView)
 
                 // Inflate upcoming_event_card layout and add to layout
-                val newCardView = layoutInflater.inflate(R.layout.upcoming_event_card, null) as CardView
+                val newCardView =
+                    layoutInflater.inflate(R.layout.upcoming_event_card, null) as CardView
                 upcomingEvents.addView(newCardView)
 
                 // Show form for user to input new event details
@@ -102,8 +100,10 @@ class MainActivity : AppCompatActivity() {
                 newEventDialog.setView(newEventView)
 
                 // Set up calendar and time pickers
-                val datePicker = newEventView.findViewById<ImageView>(R.id.new_upcoming_event_date_icon)
-                val timePicker = newEventView.findViewById<ImageView>(R.id.new_upcoming_event_time_icon)
+                val datePicker =
+                    newEventView.findViewById<ImageView>(R.id.new_upcoming_event_date_icon)
+                val timePicker =
+                    newEventView.findViewById<ImageView>(R.id.new_upcoming_event_time_icon)
                 val dateEditText = newEventView.findViewById<EditText>(R.id.event_date_input)
                 val timeEditText = newEventView.findViewById<EditText>(R.id.event_time_input)
                 val calendar = Calendar.getInstance()
@@ -114,13 +114,18 @@ class MainActivity : AppCompatActivity() {
                     val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
                     // Show date picker dialog
-                    val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
-                        // Update calendar with new date
-                        calendar.set(year, monthOfYear, dayOfMonth)
+                    val datePickerDialog =
+                        DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+                            // Update calendar with new date
+                            calendar.set(year, monthOfYear, dayOfMonth)
 
-                        // Update date edit text with new date
-                        dateEditText.setText(SimpleDateFormat("EEE, MMM d, yyyy").format(calendar.time))
-                    }, year, month, dayOfMonth)
+                            // Update date edit text with new date
+                            dateEditText.setText(
+                                SimpleDateFormat("EEE, MMM d, yyyy").format(
+                                    calendar.time
+                                )
+                            )
+                        }, year, month, dayOfMonth)
 
                     // Set minimum date to today's date
                     datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
@@ -148,16 +153,22 @@ class MainActivity : AppCompatActivity() {
                 // Set click listener for "Save" button
                 newEventView.findViewById<Button>(R.id.save_event_button).setOnClickListener {
                     // Get user input from form
-                    val eventName = newEventView.findViewById<EditText>(R.id.event_name_input).text.toString()
+                    val eventName =
+                        newEventView.findViewById<EditText>(R.id.event_name_input).text.toString()
                     val eventDate = SimpleDateFormat("EEE, MMM d, yyyy").format(calendar.time)
                     val eventTime = SimpleDateFormat("h:mm a").format(calendar.time)
-                    val eventDescription = newEventView.findViewById<EditText>(R.id.event_description_input).text.toString()
+                    val eventDescription =
+                        newEventView.findViewById<EditText>(R.id.event_description_input).text.toString()
+                    val eventLocation =
+                        newEventView.findViewById<EditText>(R.id.event_location_input).text.toString()
 
                     // Set event details in card view
                     newCardView.findViewById<TextView>(R.id.event_name).text = eventName
                     newCardView.findViewById<TextView>(R.id.event_date).text = eventDate
                     newCardView.findViewById<TextView>(R.id.event_time).text = eventTime
-                    newCardView.findViewById<TextView>(R.id.event_description).text = eventDescription
+                    newCardView.findViewById<TextView>(R.id.event_description).text =
+                        eventDescription
+                    newCardView.findViewById<TextView>(R.id.event_location).text = eventLocation
 
                     upcomingEvents.addView(emptyCardView)
                     newEventDialog.dismiss()

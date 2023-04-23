@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/splash_screen"
     android:gravity="center"
     android:orientation="vertical">
@@ -35,28 +36,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:textSize="30dp"
+            android:layout_marginLeft="110dp"
+            android:textSize="20sp"
             android:textColor="@color/dark_pupel"
-            android:text="Prioritize "/>
+            android:text="Prioritize "
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="20sp"
+            app:autoSizeMaxTextSize="40sp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/green"
             android:textStyle="bold"
-            android:textSize="30dp"
-            android:text="Your "/>
+            android:textSize="20sp"
+            android:text="Your "
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="20sp"
+            app:autoSizeMaxTextSize="40sp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textColor="@color/dark_pupel"
-            android:text="Planning"/>
+            android:text="Planning"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="20sp"
+            app:autoSizeMaxTextSize="40sp"/>
 
     </LinearLayout>
 
+
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/friends"
         />

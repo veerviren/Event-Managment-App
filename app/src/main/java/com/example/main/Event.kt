@@ -1,7 +1,5 @@
 package com.example.main
 
-import android.widget.ImageView
-
 data class Event(
     val id: Int,
     val name: String,
